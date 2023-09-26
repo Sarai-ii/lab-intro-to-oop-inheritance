@@ -9,15 +9,15 @@ class Tamagotchi {
         this.rehomed = false
     }
     greet () {
-        `Hello, I'm ${this.name}!`
+        console.log(`Hello, I'm ${this.name}!`)
     }  
     status () {
-        `••••••••••••••••••••/n
+       console.log( `••••••••••••••••••••/n
         My mood is: ${this.mood} /n
         Fullness Level: ${this.full} /n
         Energy Level: ${this.energy} /n
         I am ${this.sick? `sick`: `not sick`} /n
-        ••••••••••••••••••••`
+        ••••••••••••••••••••`)
     }
     eat () {
         this.full += 2
@@ -48,6 +48,7 @@ class Tamagotchi {
             console.log(`I am too tired to play`)
             this.energy -= 1
         } else {
+            console.log(`I'm ready to play!`)
             this.mood += 2
             this.energy --
             this.full --
@@ -69,11 +70,18 @@ class Tamagotchi {
         }
     }
     badGuardian () {
-        console.log(`Your tamagotchi has been rehomed due to negligence.`)
         if(this.energy <= 0 || this.mood <= 0 || this.full <= 0){
+            console.log(`Your tamagotchi has been rehomed due to negligence.`)
             this.rehomed = true
         }
     }
 }
+const bella = new Tamagotchi ("Bella")
+console.log(bella.name)
+bella.greet()
+bella.status()
+bella.play()
+bella.status()
+
 // Do not edit below this line
 module.exports = Tamagotchi;
